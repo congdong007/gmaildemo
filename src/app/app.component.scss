@@ -1,0 +1,55 @@
+.sidebar-toggle {
+    padding-right: 1.25rem;
+    text-decoration: none;
+    color: var(--text-hint-color);
+    font-size: 3.5rem;
+  }
+
+  .flex-box {
+    display:flex;
+    justify-content:space-between;
+    outline: 2px dashed blue;
+  }
+  
+  .flex-box-2 {
+    display:flex;
+    justify-content: flex-end;
+  }
+
+.light-button {
+    height: 50px; 
+    width: 200px;
+    font-size: 110%;
+    border-radius:30px;
+    background-color: rgb(217, 225, 235);
+}
+
+.sidebar-uestion-mark-circle-outline{
+  position: absolute;
+  right: 170px;
+  text-decoration: none;
+  color: var(--text-hint-color);
+  font-size: 2rem;
+}
+
+.sidebar-settings-2-outline{
+  position: absolute;
+  right: 130px;
+  text-decoration: none;
+  color: var(--text-hint-color);
+  font-size: 2rem;
+}
+.sidebar-keypad-outline{
+  position: absolute;
+  right: 90px;
+  text-decoration: none;
+  color: var(--text-hint-color);
+  font-size: 2rem; 
+}
+.sidebar-behance-outline{
+  position: absolute;
+  right: 10px;
+  text-decoration: none;
+  color: lightblue;
+  font-size: 2rem;  
+}

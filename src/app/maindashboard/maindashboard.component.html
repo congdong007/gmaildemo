@@ -1,0 +1,30 @@
+<!--
+<nb-layout>
+    <nb-layout-header fixed>Company Name</nb-layout-header>
+
+    <nb-sidebar>Sidebar Content</nb-sidebar>   
+
+    <nb-layout-column>
+      Page Content <button nbButton>Hello World</button>
+    </nb-layout-column>
+</nb-layout>
+-->
+
+<mat-toolbar>
+      Responsive Sidebar navigation
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <app-siderbuttonmenu></app-siderbuttonmenu>
+    <mat-divider></mat-divider>   
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <mat-divider></mat-divider>
+  
+  <mat-sidenav-content>
+      <app-maincontent></app-maincontent>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
