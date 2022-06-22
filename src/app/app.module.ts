@@ -21,7 +21,8 @@ import {
         NbListModule,
         NbIconLibraries,
         NbCheckboxModule,
-        NbTooltipModule
+        NbTooltipModule,
+        NbButtonGroupModule,
       } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
@@ -59,6 +60,13 @@ import { ManagebookmarkComponent } from './managebookmark/managebookmark.compone
 import { CreatebookmarkComponent } from './createbookmark/createbookmark.component';
 import { StartmeetingComponent } from './startmeeting/startmeeting.component';
 import { JoinmeetingComponent } from './joinmeeting/joinmeeting.component';
+import { HttpClientModule } from "@angular/common/http";
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 
 @NgModule({
@@ -109,11 +117,13 @@ import { JoinmeetingComponent } from './joinmeeting/joinmeeting.component';
     NbAccordionModule,
     NbUserModule,
     NbTooltipModule,
+    NbButtonGroupModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
     MatTreeModule,
+    MatCheckboxModule,
     NbListModule,
     MatProgressBarModule,
     MatTabsModule,
@@ -121,6 +131,11 @@ import { JoinmeetingComponent } from './joinmeeting/joinmeeting.component';
     MatMenuModule,
     NbSearchModule,
     MatTableModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatChipsModule,
+    MatRadioModule
 ],
   providers: [],
   bootstrap: [AppComponent]

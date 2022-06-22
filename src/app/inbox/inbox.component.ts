@@ -1,23 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen',symbol: 'H'},
-  {position: 2, name: 'Helium', symbol: 'He'},
-  {position: 3, name: 'Lithium', symbol: 'Li'},
-  {position: 4, name: 'Beryllium',  symbol: 'Be'},
-  {position: 5, name: 'Boron', symbol: 'B'},
-  {position: 6, name: 'Carbon', symbol: 'C'},
-  {position: 7, name: 'Nitrogen',  symbol: 'N'},
-  {position: 8, name: 'Oxygen',   symbol: 'O'},
-  {position: 9, name: 'Fluorine',  symbol: 'F'},
-  {position: 10, name: 'Neon', symbol: 'Ne'},
-];
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { ApiService } from '../service/api.service';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-inbox',
@@ -25,13 +10,39 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./inbox.component.scss']
 })
 export class InboxComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['name', 'symbol','time'];
+  dataSource!: MatTableDataSource<any>;
 
-  constructor() { }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort; 
+
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    this.getAllProducts();
+  }
+  getAllProducts(){
+    this.api.getProduct()
+    .subscribe({
+      next:(res)=>{
+        //console.log(res);
+        // paginator and sort
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error:(err)=>{
+        console.log(err);
+      }      
+    })
   }
 
+  // filer event process
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  } 
 }

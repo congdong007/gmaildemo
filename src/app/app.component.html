@@ -17,12 +17,34 @@
   <nb-layout-header fixed>
     <nb-icon nbTooltip="主菜单" (click)="toggleSidebar()" class="sidebar-toggle" icon="menu-2-outline"></nb-icon>
     <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r2.png"/>
+    
       
-      <nb-icon  nbTooltip="支持" class="sidebar-uestion-mark-circle-outline" icon="question-mark-circle-outline"></nb-icon>
-      <nb-icon  nbTooltip="设置" class="sidebar-settings-2-outline" icon="settings-2-outline"></nb-icon>
+      <nb-icon  nbTooltip="支持" class="sidebar-uestion-mark-circle-outline" icon="question-mark-circle-outline"  [matMenuTriggerFor]="menu"></nb-icon>
+      <mat-menu #menu="matMenu">
+        <div class="menu">
+        <button mat-menu-item>
+          <mat-icon>help_outline</mat-icon>
+          <span>帮助</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon> contacts</mat-icon>
+          <span>培训</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>track_changes</mat-icon>
+          <span>动态</span>
+        </button>
+        <hr flex/>
+        <button mat-menu-item>
+          <mat-icon>send</mat-icon>
+          <span>发送反馈给Google</span>
+        </button>        
+        </div>
+      </mat-menu>        
+      <nb-icon  nbTooltip="设置" class="sidebar-settings-2-outline" icon="settings-2-outline" (click)="toggleCompact()"></nb-icon>
       <nb-icon  nbTooltip="google应用" class="sidebar-keypad-outline" icon="keypad-outline"></nb-icon>
 
-      <nb-user  nbTooltip="{{getMoreInformation()}}"  class="sidebar-behance-outline" size="large" name="monkeycd" title="" onlyPicture >
+      <nb-user  nbTooltip="{{getMoreInformation()}}"  class="sidebar-behance-outline" size="medium" name="monkeycd" color="#455a64" title=""  onlyPicture >
       </nb-user>     
   
   </nb-layout-header>
@@ -34,11 +56,71 @@
     </nb-menu>
   </nb-sidebar>
 
+  <nb-sidebar right tag="right1">
+
+    <label>快捷设置</label>
+    <span layout="row">
+    <mat-icon class="sidebar-behance-outline" (click)="toggleCompact()">close</mat-icon>
+    <br>
+    <br>
+    <button nbButton fullWidth style="border-radius:15px;">查看所有设置</button>
+    <hr flex/>
+    <label>密度</label>
+    <mat-radio-group class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+        {{season.name}}  <img src= {{season.icon}} class="example-img" />
+      </mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <hr flex/>
+
+    <label>主题背景</label>  
+    <button mat-stroked-button color="primary" class="AllTheme">查看全部</button>
+    <br>
+    <br>
+    <div class="row"> 
+      <div class="column">
+        <img src="../assets/images/unnamed (1).jpg" style="width:50%">
+        <img src="../assets/images/unnamed (2).jpg" style="width:50%">
+        <img src="../assets/images/unnamed (3).jpg" style="width:50%">
+        <img src="../assets/images/unnamed (4).jpg" style="width:50%">
+        <img src="../assets/images/unnamed (5).jpg" style="width:50%">
+        <img src="../assets/images/unnamed (6).jpg" style="width:50%">
+      </div>
+    </div>   
+    <br>
+    <hr flex/>
+    <label>收件箱类型</label> 
+    <mat-radio-group class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let inboxType of inboxTypes" [value]="inboxType">
+        <br>
+        {{inboxType.name}}  <img src= {{inboxType.icon}} class="example-img" />
+        <br>
+        <br>
+      </mat-radio-button>
+    </mat-radio-group>    
+    <hr flex/>
+    <label>阅读窗格</label> 
+    <mat-radio-group class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let readingWindow of readingGrids" [value]="readingWindow">
+        <br>
+        {{readingWindow.name}}  <img src= {{readingWindow.icon}} class="example-img" />
+        <br>
+        <br>
+      </mat-radio-button>
+    </mat-radio-group>    
+    <hr flex/>   
+    <label>电子邮件会话</label>     
+    </span>
+    
+
+  </nb-sidebar>
+
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
+  <nb-layout-footer>
     This is the footer
   </nb-layout-footer>
 

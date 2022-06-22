@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { NbSidebarService , NbMenuItem , NbThemeService } from '@nebular/theme';
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+
+export interface Group {
+  name: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -8,6 +15,65 @@ import { NbSidebarService , NbMenuItem , NbThemeService } from '@nebular/theme';
 })
 export class AppComponent {
   title = 'SoccerManagerSystem';
+  //seasons: string[] = ['默认', '标准', '紧凑']; 
+  
+  seasons: Group[] = [ 
+    {
+      name: '默认',
+      icon: '../assets/images/Default.png',
+    },
+    {
+      name: '标准',
+      icon: '../assets/images/Comfortable.png',
+    },  
+    {
+      name: '紧凑',
+      icon: '../assets/images/Compact.png',
+    },            
+   ];
+
+   inboxTypes: Group[] = [ 
+    {
+      name: '默认',
+      icon: '../assets/images/Classic.png',
+    },
+    {
+      name: '重要邮件优先',
+      icon: '../assets/images/Importantfirst.png',
+    },  
+    {
+      name: '未读邮件优先',
+      icon: '../assets/images/Unreadfirst.png',
+    }, 
+    {
+      name: '加星标邮件优先',
+      icon: '../assets/images/Starredfirst.png',
+    },     
+    {
+      name: '优先收件箱',
+      icon: '../assets/images/Priorityinbox.png',
+    },     
+    {
+      name: '多个收件箱',
+      icon: '../assets/images/MultipleInboxes.png',
+    },                  
+   ];
+   
+
+   readingGrids: Group[] = [ 
+    {
+      name: '不分割',
+      icon: '../assets/images/Classic.png',
+    },
+    {
+      name: '收件箱右侧',
+      icon: '../assets/images/Previewpaneright.png',
+    },  
+    {
+      name: '收件箱下方',
+      icon: '../assets/images/Previewpanebottom.png',
+    },                  
+   ];      
 
   /*
   items: NbMenuItem[] = [
@@ -202,7 +268,19 @@ export class AppComponent {
     },            
   ];   
   constructor(private readonly sidebarService: NbSidebarService,
-              private readonly themeService: NbThemeService) {
+              private readonly themeService: NbThemeService,
+              private matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer) {
+
+              this.matIconRegistry.addSvgIcon(
+                "flight1",
+                this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/message-circle.svg')
+              );  
+
+              this.matIconRegistry.addSvgIcon(
+                "user1",
+                this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/images/user.svg')
+              );                         
   }
 
   toggleSidebar(): boolean {
@@ -217,4 +295,9 @@ export class AppComponent {
   getMoreInformation(): string {
     return 'monkeycd monkeycd monkeycd@gmail.com';
   }
+
+  toggleCompact() {
+    this.sidebarService.toggle(false, 'right1');
+    return false;
+  }  
 }

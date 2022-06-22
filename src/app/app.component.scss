@@ -53,3 +53,61 @@
   color: lightblue;
   font-size: 2rem;  
 }
+
+.nb-user .user-title {
+  color: white;
+}
+
+.advance-search{
+  top:30px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 15px;
+}
+
+.example-img{
+  position: absolute;
+  right: 10px;  
+}
+
+
+.example-section {
+  margin: 12px 0;
+}
+
+.example-section1 {
+  margin: 20px 0;
+}
+
+.row {
+  display: -ms-flexbox; 
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.column {
+  -ms-flex: 50%; 
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 4px;
+  vertical-align: middle;
+}
+
+.AllTheme{
+  position: absolute;
+  right: 10px;
+  border-radius:15px;
+}
